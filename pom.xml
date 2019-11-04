@@ -74,4 +74,9 @@
       </plugins>
     </pluginManagement>
   </build>
+  <description>This is the minesweeper JSP demonstration application for testing the AWS CI/CD build pipelines.</description>
+  <issueManagement>
+  	<system>JIRA</system>
+  	<url>https://mackson.atlassian.net/jira/software/projects/MCICD/boards/23/backlog</url>
+  </issueManagement>
 </project>
