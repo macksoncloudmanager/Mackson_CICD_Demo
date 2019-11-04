@@ -34,7 +34,7 @@ public class DeleteRecordServlet extends HttpServlet {
         JSONResponse obj = new JSONResponse();
 
         if (session.getAttribute("id") == null) {
-            out.print("{\"error\": \"nie zalogowany\"}");
+            out.print("{\"error\": \"not logged in\"}");
             return;
         }
 
@@ -60,7 +60,7 @@ public class DeleteRecordServlet extends HttpServlet {
 
         } catch (ClassNotFoundException | IllegalAccessException
                 | InstantiationException | SQLException e) {
-            obj.setError("Błąd bazy danych");
+            obj.setError("Database Error");
         }
 
         Gson gson = new GsonBuilder().serializeNulls().create();

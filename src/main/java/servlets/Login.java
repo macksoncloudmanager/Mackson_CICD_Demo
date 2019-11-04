@@ -51,16 +51,16 @@ public class Login extends HttpServlet {
                 hash = hash.substring(0, 2) + "a" + hash.substring(3);
                 if (BCrypt.checkpw(pass, hash)) {
 
-                    session.setAttribute("success","Zalogowano");
+                    session.setAttribute("success","Signed");
                     session.setAttribute("id",resultSet.getString("id"));
                     session.setAttribute("login",resultSet.getString("login"));
                     session.setAttribute("avatar",resultSet.getString("avatar"));
                 }else{
-                    session.setAttribute("error","Zły login lub hasło");
+                    session.setAttribute("error","Bad login or password");
                 }
 
             } else {
-                session.setAttribute("error","Zły login lub hasło");
+                session.setAttribute("error","Bad login or password");
             }
 
             ps.close();
@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
 
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            session.setAttribute("error","Błąd bazy danych");
+            session.setAttribute("error","Database Error");
         }
 
         if(session.getAttribute("error") != null){

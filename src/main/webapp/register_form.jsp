@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    String title = "Rejestracja";
+    String title = "Registration";
     String p = "index";
 %>
 <%@include file="parts/header.jsp" %>
@@ -23,18 +23,18 @@
             </div>
 
             <div class="form-group">
-                <label for="pass">Hasło</label>
-                <input type="password" name="pass" class="form-control" title="Hasło" id="pass" placeholder="Hasło"
+                <label for="pass">Password</label>
+                <input type="password" name="pass" class="form-control" title="Password" id="pass" placeholder="Password"
                        required>
             </div>
 
             <div class="form-group">
-                <label for="avatar">Awatar</label>
-                <input type="file" name="avatar" class="form-control" title="Awatar" id="avatar" placeholder="Awatar">
+                <label for="avatar">Avatar</label>
+                <input type="file" name="avatar" class="form-control" title="Avatar" id="avatar" placeholder="Avatar">
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Zarejestruj</button>
+                <button type="submit" class="btn btn-default">Register</button>
             </div>
 
         </form>

@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String title = "Moje rekordy";
+    String title = "My records";
     String p = "records_user";
 
     if (session.getAttribute("login") == null) {
@@ -16,12 +16,12 @@
     <form method="post" action="servlet/set_avatar" enctype="multipart/form-data">
 
         <div class="form-group" style="width: 50%;">
-            <label for="avatar">Zmiana awatara</label>
-            <input type="file" name="avatar" class="form-control" title="Aby usunąć awatar nie podawaj obrazka"
-                   id="avatar" placeholder="Awatar">
+            <label for="avatar">Avatar change</label>
+            <input type="file" name="avatar" class="form-control" title="To remove the avatar do not enter the picture"
+                   id="avatar" placeholder="Avatar">
         </div>
 
-        <button class="btn btn-default" type="submit" style="display: inline-block;">Zmień</button>
+        <button class="btn btn-default" type="submit" style="display: inline-block;">Change</button>
     </form>
 
     <hr/>
@@ -42,19 +42,19 @@
             resultSet = ps.executeQuery();
 
             if (!resultSet.next()) {
-                out.print("Brak wyników.");
+                out.print("No results.");
             } else {
     %>
 
     <h3>
-        Moje wyniki
+        My results
     </h3>
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
             <td>#</td>
-            <td>Czas</td>
-            <td>Plansza</td>
+            <td>Time</td>
+            <td>Board</td>
             <td></td>
         </tr>
         </thead>
@@ -70,7 +70,7 @@
             <td><%= resultSet.getString("board")%></td>
             <td>
                 <a href="servlet/delete_record?id=<%= resultSet.getInt("id") %>&page=records_user">
-                    <button type="button" class="btn btn-danger">Usuń</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
                 </a>
             </td>
         </tr>
