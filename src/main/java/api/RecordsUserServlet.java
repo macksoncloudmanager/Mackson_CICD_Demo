@@ -38,7 +38,7 @@ public class RecordsUserServlet extends HttpServlet {
 
 
         if (session.getAttribute("id") == null) {
-            obj.setError("You must be logged in");
+            obj.setError("Musisz być zalogowany");
             out.print(gson.toJson(obj));
             return;
         }
@@ -70,7 +70,7 @@ public class RecordsUserServlet extends HttpServlet {
             resultSet = ps.executeQuery();
 
             if (!resultSet.next()) {
-                obj.setEmpty("No Result");
+                obj.setEmpty("Brak wyników");
             } else {
                 do {
                     Record r = new Record(
@@ -86,7 +86,7 @@ public class RecordsUserServlet extends HttpServlet {
             }
         } catch (SQLException | ClassNotFoundException
                 | InstantiationException | IllegalAccessException e) {
-            obj.setEmpty("Database Error");
+            obj.setEmpty("Błąd bazy danych");
         }
 
         out.print(gson.toJson(obj));

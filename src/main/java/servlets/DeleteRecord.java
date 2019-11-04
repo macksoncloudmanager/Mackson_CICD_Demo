@@ -51,7 +51,7 @@ public class DeleteRecord extends HttpServlet {
 
         }catch (ClassNotFoundException | IllegalAccessException
                 | InstantiationException | SQLException e){
-            session.setAttribute("error","Database Error");
+            session.setAttribute("error","Błąd bazy danych");
         }
 
         if(request.getParameter("board") != null){

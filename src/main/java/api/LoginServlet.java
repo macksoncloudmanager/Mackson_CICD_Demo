@@ -66,11 +66,11 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("login", resultSet.getString("login"));
                     session.setAttribute("avatar", resultSet.getString("avatar"));
                 } else {
-                    obj.setError("Bad login or password");
+                    obj.setError("Zły login lub hasło");
                 }
 
             } else {
-                obj.setError("Bad login or password");
+                obj.setError("Zły login lub hasło");
             }
 
             ps.close();
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            obj.setError("Database Error");
+            obj.setError("Błąd bazy danych");
         }
 
         out.print(gson.toJson(obj));

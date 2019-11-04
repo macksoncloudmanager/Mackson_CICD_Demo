@@ -23,12 +23,15 @@
 
         <div class="col-xs-12">
             <p>
-                Minesweeper (original title Minesweeper) - a classic one-man computer game written in 1981 by Robert Donner, 
-                <br>available as an accessory in any Microsoft Windows system up to version 7. From version 8 and RT available for 
-                <br>download in the Windows store (there are also versions for other operating systems ).                 
-                <br><br>The game consists in discovering individual fields on the board in such a way that you do not come across a mine. 
-                <br>Each of the discovered fields has the number of mines that are in direct contact with the field (from zero to eight). 
-                <br>If we mark a field with a flag, it is protected against unveiling, so that we will not accidentally reveal the mine.
+                Saper (tytuł oryginalny Minesweeper) – klasyczna jednoosobowa gra komputerowa napisana w 1981 roku przez
+                Roberta Donnera, dostępna jako akcesorium w każdym systemie Microsoft Windows do wersji 7. Od wersji 8 i
+                RT
+                dostępne do ściągnięcia w sklepie Windows (istnieją też wersje dla innych systemów operacyjnych). Gra
+                polega na odkrywaniu na planszy poszczególnych pól w taki sposób, aby nie natrafić na minę. Na każdym z
+                odkrytych pól napisana jest liczba min, które bezpośrednio stykają się z danym polem (od zera do ośmiu).
+                Jeśli
+                oznaczymy dane pole flagą, jest ono zabezpieczone przed odsłonięciem, dzięki czemu przez przypadek nie
+                odsłonimy miny.
             </p>
         </div>
 
