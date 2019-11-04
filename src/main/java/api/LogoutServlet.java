@@ -30,7 +30,7 @@ public class LogoutServlet extends HttpServlet {
         JSONResponse obj = new JSONResponse();
 
         if (session.getAttribute("id") == null) {
-            obj.setError("Nie jesteś zalogowany");
+            obj.setError("You're not logged in");
             out.print(gson.toJson(obj));
             return;
         }

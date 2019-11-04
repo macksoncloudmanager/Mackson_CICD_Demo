@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String title = "Wyniki";
+    String title = "Results";
     String p = "records";
 %>
 <%@include file="parts/header.jsp" %>
@@ -11,10 +11,10 @@
 
     <form method="get">
         <div class="form-group" style="width: 50%;">
-            <label for="plansza">Rozmiar planszy:</label>
+            <label for="plansza">Board size:</label>
             <select class="form-control" id="plansza" name="board" style="width: 50%;display: inline-block;">
                 <option value="all" <%= (request.getParameter("board") == null || request.getParameter("board").equals("all")) ? "selected" : ""  %>>
-                    Wszystkie
+                    All
                 </option>
                 <option value="8x8" <%= (session.getAttribute("board") != null && session.getAttribute("board").equals("8x8")) ? "selected" : "" %>>
                     8x8
@@ -26,10 +26,10 @@
                     30x16 lub16x30
                 </option>
                 <option value="custom" <%= (session.getAttribute("board") != null && session.getAttribute("board").equals("custom")) ? "selected" : "" %>>
-                    Własne ustawienia
+                    Own settings
                 </option>
             </select>
-            <button class="btn btn-default" type="submit" style="display: inline-block;">Filtruj</button>
+            <button class="btn btn-default" type="submit" style="display: inline-block;">Filter</button>
         </div>
     </form>
 
@@ -65,7 +65,7 @@
             resultSet = ps.executeQuery();
 
             if (!resultSet.next()) {
-                out.print("Brak wyników.");
+                out.print("No results.");
             } else {
     %>
 
@@ -73,9 +73,9 @@
         <thead>
         <tr>
             <td>#</td>
-            <td>Czas</td>
-            <td>Plansza</td>
-            <td>Gracz</td>
+            <td>Time</td>
+            <td>Board</td>
+            <td>Player</td>
         </tr>
         </thead>
         <tbody>
@@ -89,8 +89,8 @@
             <td><%= resultSet.getString("board") %>
             </td>
             <td>
-                <img src="avatars/<%=resultSet.getString("avatar")%>" alt="" class="avatar">
-                <%=resultSet.getString("login")%>
+                <img src="avatars/<%= resultSet.getString("avatar")%>" alt="" class="avatar">
+                <%= resultSet.getString("login")%>
             </td>
         </tr>
         <%

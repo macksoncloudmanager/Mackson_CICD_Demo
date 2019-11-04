@@ -12,19 +12,19 @@
               action="servlet/login<%= request.getParameter("back") != null ? "?back=" + request.getParameter("back") : "" %>">
 
             <div class="form-group">
-                <label for="login">Login lub email</label>
+                <label for="login">Login email</label>
                 <input type="text" name="login" class="form-control" title="Login lub email" id="login"
                        placeholder="Login lub email" required autofocus>
             </div>
 
             <div class="form-group">
-                <label for="pass">Hasło</label>
+                <label for="pass">Password</label>
                 <input type="password" name="pass" class="form-control" title="Hasło" id="pass" placeholder="Hasło"
                        required>
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Zaloguj</button>
+                <button type="submit" class="btn btn-default">Log In</button>
             </div>
 
         </form>
