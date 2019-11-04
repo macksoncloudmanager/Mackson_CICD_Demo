@@ -69,14 +69,14 @@ public class RegisterServlet extends HttpServlet {
 
                 obj.setSuccess(true);
             } else {
-                obj.setError("Email or login busy");
+                obj.setError("Email lub login zajęty");
             }
             ps.close();
             connection.close();
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            session.setAttribute("error", "Login error");
-            obj.setError("Login error");
+            session.setAttribute("error", "Błąd logowania");
+            obj.setError("Błąd logowania");
         }
 
         out.print(gson.toJson(obj));

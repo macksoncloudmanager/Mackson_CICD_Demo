@@ -73,7 +73,7 @@ public class RecordsServlet extends HttpServlet {
             resultSet = ps.executeQuery();
 
             if (!resultSet.next()) {
-                obj.setEmpty("No results");
+                obj.setEmpty("Brak wyników");
             } else {
                 do {
                     Record r = new Record(
@@ -93,7 +93,7 @@ public class RecordsServlet extends HttpServlet {
             connection.close();
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            obj.setError("Database Error");
+            obj.setError("Błąd bazy danych");
         }
 
         Gson gson = new GsonBuilder().serializeNulls().create();

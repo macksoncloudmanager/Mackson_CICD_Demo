@@ -58,15 +58,15 @@ public class Register extends HttpServlet {
 
                 ps.execute();
 
-                session.setAttribute("success", "They recorded. You can login");
+                session.setAttribute("success", "Zarejestrowano. Można się zalogować");
             } else {
-                session.setAttribute("error", "Email or login busy.");
+                session.setAttribute("error", "Email lub login zajęty.");
             }
             ps.close();
             connection.close();
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            session.setAttribute("error", "Login error");
+            session.setAttribute("error", "Błąd logowania");
         }
 
         if(session.getAttribute("error") != null){

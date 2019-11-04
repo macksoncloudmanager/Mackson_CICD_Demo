@@ -40,7 +40,7 @@ public class SetAvatarServlet extends HttpServlet {
         JSONResponse obj = new JSONResponse();
 
         if (session.getAttribute("id") == null) {
-            obj.setError("You must log in");
+            obj.setError("Musisz się zalogować");
             out.print(gson.toJson(obj));
             return;
         }
@@ -69,7 +69,7 @@ public class SetAvatarServlet extends HttpServlet {
             connection.close();
         } catch (SQLException | ClassNotFoundException |
                 IllegalAccessException | InstantiationException e) {
-            obj.setError("Database Error");
+            obj.setError("Błąd bazy danych");
         }
 
         out.print(gson.toJson(obj));

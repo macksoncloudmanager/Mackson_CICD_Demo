@@ -29,7 +29,7 @@ public class AddRecordServlet extends HttpServlet {
         Gson gson = new GsonBuilder().serializeNulls().create();
 
         if(session.getAttribute("id") == null){
-            obj.setError("You must log in");
+            obj.setError("Musisz się zalogować");
             out.print(gson.toJson(obj));
             return;
         }

@@ -3,8 +3,8 @@
 <form method="post" onsubmit="return setVariables();">
 
     <div class="form-group">
-        <label for="board">Board size:</label>
-        <select class="form-control" name="board" id="board" title="Board size">
+        <label for="plansza">Rozmiar planszy:</label>
+        <select class="form-control" name="plansza" id="plansza" title="Rozmiar planszy">
             <option value="8x8" selected>8x8 (10 min)</option>
             <option value="16x16">16x16 (40 min)</option>
             <option value="16x30">16x30 (99 min)</option>
@@ -15,20 +15,20 @@
 
     <div id="custom" class="grey">
         <div class="form-group">
-            <label for="width">Width</label>
-            <input type="text" name="width" class="form-control" title="Width" id="width" placeholder="Width"
+            <label for="width">Szerokość</label>
+            <input type="text" name="width" class="form-control" title="Szerokość" id="width" placeholder="Szerokość"
                    disabled>
         </div>
         <div class="form-group">
-            <label for="height">Height</label>
-            <input type="text" name="height" class="form-control" title="Height" id="height" placeholder="Height"
+            <label for="height">Wysokość</label>
+            <input type="text" name="height" class="form-control" title="Wysokość" id="height" placeholder="Wysokość"
                    disabled>
         </div>
         <div class="form-group">
-            <label for="mines">Mines</label>
-            <input type="text" name="mines" class="form-control" title="Mines" id="mines" placeholder="Number"
+            <label for="mines">Liczba min</label>
+            <input type="text" name="mines" class="form-control" title="Liczba min" id="mines" placeholder="Liczba min"
                    disabled>
         </div>
     </div>
-    <button type="submit" class="btn btn-default">New Game</button>
+    <button type="submit" class="btn btn-default">Nowa gra</button>
 </form>
