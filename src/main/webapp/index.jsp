@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    String title = "Saper";
+    String title = "Minesweeper";
     String p = "index";
 %>
 

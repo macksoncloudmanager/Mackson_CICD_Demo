@@ -24,18 +24,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">Saper</a>
+                <a class="navbar-brand" href="index.jsp">Minesweeper</a>
             </div>
 
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li <%= p.equals("game") ? "class=\"active\"" : "" %>>
-                        <a href="game.jsp">Gra <%= p.equals("game") ? "<span class=\"sr-only\">(current)</span>" : "" %>
+                        <a href="game.jsp">Game <%= p.equals("game") ? "<span class=\"sr-only\">(current)</span>" : "" %>
                         </a>
                     </li>
                     <li <%= p.equals("records") ? "class=\"active\"" : "" %>>
-                        <a href="records.jsp">Wyniki <%= p == "records" ? "<span class=\"sr-only\">(current)</span>" : "" %>
+                        <a href="records.jsp">Results <%= p == "records" ? "<span class=\"sr-only\">(current)</span>" : "" %>
                         </a>
                     </li>
                 </ul>
@@ -47,15 +47,15 @@
                     <ul class="nav navbar-nav">
                         <li <%= p.equals("records_user") ? "class=\"active\"" : "" %>>
                             <a href="records_user.jsp">Zalogowany
-                                jako: <%= session.getAttribute("login") %> <%= p.equals("game") ? "<span class=\"sr-only\">(current)</span>" : "" %>
-                                <img src="avatars/<%=session.getAttribute("avatar")%>" alt="" class="avatar">
+                                as: <%= session.getAttribute("login") %> <%= p.equals("game") ? "<span class=\"sr-only\">(current)</span>" : "" %>
+                                <img src="avatars/<%= session.getAttribute("avatar")%>" alt="" class="avatar">
                             </a>
                         </li>
                     </ul>
                     <div class="btn-group" role="group">
                         <a href="servlet/logout">
                             <button type="button" class="btn btn-default navbar-btn">
-                                Wyloguj
+                                Logout
                             </button>
                         </a>
                     </div>
@@ -67,14 +67,14 @@
                     <div class="btn-group" role="group">
                         <a href="login_form.jsp">
                             <button type="button" class="btn btn-default navbar-btn">
-                                Zaloguj
+                                Login
                             </button>
                         </a>
                     </div>
                     <div class="btn-group" role="group">
                         <a href="register_form.jsp">
                             <button type="button" class="btn btn-default navbar-btn">
-                                Zarejestruj
+                                Register
                             </button>
                         </a>
                     </div>
@@ -92,7 +92,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                 aria-hidden="true">&times;</span>
         </button>
-        <strong>Ostrzeżenie!</strong>
+        <strong>Warning!</strong>
         <%
             out.print((session.getAttribute("error") != null) ? session.getAttribute("error") : "");
             session.removeAttribute("error");
@@ -103,7 +103,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                 aria-hidden="true">&times;</span>
         </button>
-        <strong>Sukces!</strong>
+        <strong>Success!</strong>
         <%
             out.print((session.getAttribute("success") != null) ? session.getAttribute("success") : "");
             session.removeAttribute("success");
