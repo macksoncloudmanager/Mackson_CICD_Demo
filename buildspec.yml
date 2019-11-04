@@ -35,7 +35,7 @@ artifacts:
   files:
     - '**/*'
     # - location
-  #name: $(date +%Y-%m-%d)
+  name: Mackson_CICD_Demo_$CODEBUILD_WEBHOOK_HEAD_REF
   #discard-paths: yes
   base-directory: target/Mackson_CICD_Demo
 #cache:
