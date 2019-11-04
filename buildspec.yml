@@ -31,9 +31,9 @@ phases:
     #commands:
       # - command
       # - command
-#artifacts:
-  #files:
-    # - location
+artifacts:
+  files:
+    - 'target/Mackson_CICD_Demo.war'
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
