@@ -33,11 +33,11 @@ phases:
       # - command
 artifacts:
   files:
-    - 'target/Mackson_CICD_Demo.war'
+    - '**/*'
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes
-  #base-directory: location
+  base-directory: target/Mackson_CICD_Demo
 #cache:
   #paths:
     # - paths
