@@ -1,4 +1,4 @@
-var plansza = "8x8";
+var board = "8x8";
 
 var backup = {
     width: 8,
@@ -12,15 +12,15 @@ var countMines = 10;
 var countEmptys = (width * height) - countMines;
 var play = true;
 
-var pola = [];
+var field = [];
 var first = true;
 
-var licznikMin;
+var counterMin;
 var timer;
 var time = 0;
 var thread;
 
-$("#plansza").on("change", function () {
+$("#board").on("change", function () {
     if (this.value === "custom") {
         $("#custom").removeClass("grey");
         $("#width").prop("disabled", false);
@@ -40,7 +40,7 @@ function win() {
 
     $("#new-game").attr("src", "res/smiley.ico");
     setTimeout(function () {
-        alert("Wygrana");
+        alert("Won");
 
         $.ajax({
             type: "POST",
@@ -48,17 +48,17 @@ function win() {
             dataType: "json",
             data: {
                 time: time,
-                board: plansza
+                board: board
             },
             success: function (data) {
                 if (data === "end") {
-                    alert("Błąd zapisywania wyniku: sesja wygasła.");
+                    alert("Error saving result: The session has expired.");
                 } else if (data !== true) {
-                    alert("Błąd zapisywania wyniku.");
+                    alert("Error saving the result.");
                 }
             },
             error: function () {
-                alert("Błąd połączenia.");
+                alert("Connection error.");
             }
         });
 
@@ -67,21 +67,21 @@ function win() {
 
 function lose(x, y) {
     clearInterval(thread);
-    $(pola[y][x].td).addClass("mine-red");
+    $(field[y][x].td).addClass("mine-red");
 
     play = false;
     for (var i = 0; i < height; i++) {
         for (var j = 0; j < width; j++) {
 
-            if (pola[i][j].val === -1 && !pola[i][j].td.hasClass("mine-red")) {
-                pola[i][j].td.addClass("mine");
+            if (field[i][j].val === -1 && !field[i][j].td.hasClass("mine-red")) {
+                field[i][j].td.addClass("mine");
             }
         }
     }
 
     $("#new-game").attr("src", "res/smiley3.ico");
     setTimeout(function () {
-        alert("Przegrana");
+        alert("Lost");
     }, 100);
 }
 
@@ -101,21 +101,21 @@ function shoot(x, y, action) {
             if (!(i === y && j === x)
                 && i >= 0 && i < height
                 && j >= 0 && j < width
-                && pola[i][j].zakryte === true) {
+                && field[i][j].zakryte === true) {
                 switch (action) {
                     case "dis":
                         discovery(j, i);
                         break;
                     case "dis2":
-                        if (!(i === y && j === x) && pola[i][j].flag === false) {
+                        if (!(i === y && j === x) && field[i][j].flag === false) {
                             discovery(j, i);
                         }
                         break;
                     case "count":
-                        if (pola[i][j].val === -1) {
+                        if (field[i][j].val === -1) {
                             count++;
                         }
-                        if (pola[i][j].flag === true) {
+                        if (field[i][j].flag === true) {
                             flags++;
                         }
                         break;
@@ -127,12 +127,12 @@ function shoot(x, y, action) {
 }
 
 function discovery(x, y) {
-    if (!play || pola[y][x].flag) {
+    if (!play || field[y][x].flag) {
         return;
     }
-    if (pola[y][x].zakryte === false) {
+    if (field[y][x].zakryte === false) {
         //odkrywanie wokół liczby
-        if (pola[y][x].val > 0) {
+        if (field[y][x].val > 0) {
             if (shoot(x, y, "count")) {
                 shoot(x, y, "dis2");
             }
@@ -140,21 +140,21 @@ function discovery(x, y) {
         return;
     }
 
-    pola[y][x].zakryte = false;
-    $(pola[y][x].td).addClass("blank");
+    field[y][x].zakryte = false;
+    $(field[y][x].td).addClass("blank");
 
     // przegrana
-    if (pola[y][x].val === -1) {
+    if (field[y][x].val === -1) {
         lose(x, y);
     } else {
         countEmptys--;
     }
 
-    if (pola[y][x].val > 0) {
-        $(pola[y][x].td).addClass("field" + pola[y][x].val);
+    if (field[y][x].val > 0) {
+        $(field[y][x].td).addClass("field" + field[y][x].val);
     }
 
-    if (pola[y][x].val === 0) {
+    if (field[y][x].val === 0) {
         shoot(x, y, "dis");
     }
 
@@ -168,20 +168,20 @@ function generateNumbers() {
     for (var i = 0; i < height; i++) {
         for (var j = 0; j < width; j++) {
 
-            if (pola[i][j].val !== -1) {
+            if (field[i][j].val !== -1) {
                 var count = 0;
                 for (var i2 = i - 1; i2 <= i + 1; i2++) {
                     for (var j2 = j - 1; j2 <= j + 1; j2++) {
 
                         if (i2 >= 0 && i2 < height
                             && j2 >= 0 && j2 < width) {
-                            if (pola[i2][j2].val === -1) {
+                            if (field[i2][j2].val === -1) {
                                 count++;
                             }
                         }
                     }
                 }
-                pola[i][j].val = count;
+                field[i][j].val = count;
             }
         }
     }
@@ -194,7 +194,7 @@ function generateMines(x, y) {
             var randX = Math.floor(Math.random() * (width));
             var randY = Math.floor(Math.random() * (height));
 
-        } while (pola[randY][randX].val === -1
+        } while (field[randY][randX].val === -1
         || (randX === x - 1 && randY === y - 1)
         || (randX === x && randY === y - 1)
         || (randX === x + 1 && randY === y - 1)
@@ -206,7 +206,7 @@ function generateMines(x, y) {
         || (randX === x + 1 && randY === y + 1)
             );
 
-        pola[randY][randX].val = -1;
+        field[randY][randX].val = -1;
     }
     generateNumbers();
 }
@@ -228,17 +228,17 @@ function Pole(td, x, y, val) {
         }
         discovery(x, y);
     }).on("contextmenu", function (e) {
-        if (pola[y][x].zakryte === false) {
+        if (field[y][x].zakryte === false) {
             return false;
         }
 
-        if (pola[y][x].flag) {
+        if (field[y][x].flag) {
             countMines++;
         } else {
             countMines--;
         }
-        licznikMin.html(countMines);
-        pola[y][x].flag = !pola[y][x].flag;
+        counterMin.html(countMines);
+        field[y][x].flag = !field[y][x].flag;
 
         if ($(e.target).is("div")) {
             $(e.target).closest("td").toggleClass("flag");
@@ -255,18 +255,18 @@ function createBoard() {
     for (var i = 0; i < height; i++) {
         var tr = $("<tr>");
         table.append(tr);
-        pola[i] = [];
+        field[i] = [];
 
         for (var j = 0; j < width; j++) {
-            pola[i][j] = new Pole($("<td>").append($("<div>")), j, i, 0);
-            tr.append(pola[i][j].td);
+            field[i][j] = new Pole($("<td>").append($("<div>")), j, i, 0);
+            tr.append(field[i][j].td);
         }
     }
 }
 
 function setVariables() {
-    plansza = $("#plansza").val();
-    if (plansza === "custom") {
+    board = $("#board").val();
+    if (board === "custom") {
         width = $("#width").val();
         height = $("#height").val();
         countMines = $("#mines").val();
@@ -274,21 +274,21 @@ function setVariables() {
         if (width.trim() === "" || height.trim() === "" || countMines.trim() === "" ||
             parseInt(width) <= 3 || parseInt(height) <= 3 || parseInt(countMines) <= 3
         ) {
-            alert("Złe wartości");
+            alert("Bad values");
             return false;
         }
 
-        plansza = width + "x" + height;
+        board = width + "x" + height;
 
     } else {
-        var tmp = plansza.split("x");
+        var tmp = board.split("x");
         width = parseInt(tmp[0]);
         height = parseInt(tmp[1]);
-        if (plansza === "8x8") {
+        if (board === "8x8") {
             countMines = 10;
-        } else if (plansza === "16x16") {
+        } else if (board === "16x16") {
             countMines = 40;
-        } else if (plansza === "16x30" || plansza === "30x16") {
+        } else if (board === "16x30" || board === "30x16") {
             countMines = 99;
         }
     }
@@ -319,8 +319,8 @@ function start() {
         {},
         function (data) {
             $("#container").html(data);
-            licznikMin = $("#countMines");
-            licznikMin.html(countMines);
+            counterMin = $("#countMines");
+            counterMin.html(countMines);
             timer = $("#timer");
             first = true;
 
@@ -344,7 +344,7 @@ function back() {
         {},
         function (data) {
             $("#container").html(data);
-            $("#plansza").on("change", function () {
+            $("#board").on("change", function () {
                 if (this.value === "custom") {
                     $("#custom").removeClass("grey");
                     $("#width").prop("disabled", false);

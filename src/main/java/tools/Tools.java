@@ -9,10 +9,10 @@ import java.util.Random;
 
 public class Tools {
 
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/Minesweeper_JSP";
+    public static final String DB_URL = "jdbc:mysql://aadbxbguyo9gk5.chlgxzvmnmvp.us-east-1.rds.amazonaws.com:33006/Minesweeper_JSP?useSSL=false";
     public static final String DB_DRIVER = "com.mysql.jdbc.Driver";
     public static final String DB_USER = "root";
-    public static final String DB_PASS = "";
+    public static final String DB_PASS = "Rush2112";
 
     /**
      * Directory where uploaded files will be saved, its relative to

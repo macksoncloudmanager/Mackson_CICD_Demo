@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    String title = "Logowanie";
+    String title = "Login";
     String p = "index";
 %>
 
@@ -12,14 +12,14 @@
               action="servlet/login<%= request.getParameter("back") != null ? "?back=" + request.getParameter("back") : "" %>">
 
             <div class="form-group">
-                <label for="login">Login email</label>
-                <input type="text" name="login" class="form-control" title="Login lub email" id="login"
-                       placeholder="Login lub email" required autofocus>
+                <label for="login">Login or email</label>
+                <input type="text" name="login" class="form-control" title="Login or email" id="login"
+                       placeholder="Login or email" required autofocus>
             </div>
 
             <div class="form-group">
                 <label for="pass">Password</label>
-                <input type="password" name="pass" class="form-control" title="Hasło" id="pass" placeholder="Hasło"
+                <input type="password" name="pass" class="form-control" title="password" id="pass" placeholder="password"
                        required>
             </div>
 

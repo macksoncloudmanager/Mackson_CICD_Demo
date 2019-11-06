@@ -46,7 +46,7 @@
                 <div class="btn-group navbar-right">
                     <ul class="nav navbar-nav">
                         <li <%= p.equals("records_user") ? "class=\"active\"" : "" %>>
-                            <a href="records_user.jsp">Zalogowany
+                            <a href="records_user.jsp">Logged in
                                 as: <%= session.getAttribute("login") %> <%= p.equals("game") ? "<span class=\"sr-only\">(current)</span>" : "" %>
                                 <img src="avatars/<%= session.getAttribute("avatar")%>" alt="" class="avatar">
                             </a>

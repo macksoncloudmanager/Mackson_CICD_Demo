@@ -9,7 +9,7 @@
             <option value="16x16">16x16 (40 min)</option>
             <option value="16x30">16x30 (99 min)</option>
             <option value="30x16">30x16 (99 min)</option>
-            <option value="custom">Własne ustawienia</option>
+            <option value="custom">Custom settings</option>
         </select>
     </div>
 

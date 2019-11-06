@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String title = "Gra";
+    String title = "Game";
     String p = "game";
 
     if (session.getAttribute("login") == null) {
