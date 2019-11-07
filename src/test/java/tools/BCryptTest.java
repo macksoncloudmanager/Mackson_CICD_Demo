@@ -8,14 +8,26 @@ import tools.BCrypt;
 
 public class BCryptTest {
 
+	private String passwdHash;
+	private String PWSalt;
+	
 	@Test
 	public final void testHashpw() {
-		assertTrue(true); // TODO
+		PWSalt = BCrypt.gensalt();
+		passwdHash = BCrypt.hashpw("Test",PWSalt);
+		System.out.println(passwdHash);
+		
+		if (passwdHash.isEmpty()) {
+			fail("Empty Password");
+		} else {
+			assertTrue(true);
+		}
 	}
 
 	@Test
 	public final void testCheckpw() {
-		fail("Not yet implemented"); // TODO
+		
+		assertTrue(BCrypt.checkpw("Test","$2a$10$zpi.iCGfYQ/J2GCpj9tgueYgG4fMVIVis4BgIzs/Tj6cV2HpTtFAy"));
 	}
 
 }
